@@ -1,0 +1,28 @@
+{
+  "name": "icescraper",
+  "version": "1.0.0",
+  "description": "Homework assignment Week 18. Web app to scrape a website for news stories and then allow users to leave comments.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmeder2016/IceScraper.git"
+  },
+  "author": "Michael Meder",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mmeder2016/IceScraper/issues"
+  },
+  "homepage": "https://github.com/mmeder2016/IceScraper#readme",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "cheerio": "^0.22.0",
+    "express": "^4.14.1",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^4.8.4",
+    "request": "^2.79.0"
+  }
+}
