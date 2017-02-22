@@ -36,7 +36,8 @@ app.use(function(req, res, next) {
 app.set('port', (process.env.PORT || 3000));
 
 // DATABASE MODELS
-var db = require('./models');
+var db;
+//var db = require('./models');
 
 // SET ROUTES
 var router = require('./router');
