@@ -13,14 +13,41 @@ var mongoose = require('mongoose');
 var app = express();
 
 
+// Log what we are scraping
+console.log("\n*************************************************************\n" +
+    "Going to the Washington Post and collecting all the Headlines and Links\n" +
+    "\n*************************************************************\n");
 
-// This makes sure that any errors are logged if mongodb runs into an issue
-db.on("error", function(error) {
-    console.log("Database Error:", error);
-});
+// An empty array to save the data that we'll scrape
+var scrapeResults = [];
 
+// Get the html of the main web page and save it in the html
+request("https://www.washingtonpost.com/", function(error, response, html) {
 
-// Set the app to listen on port 3000
-app.listen(3000, function() {
-    console.log("App running on port 3000!");
+    // Load the HTML into cheerio and save it to a variable
+    var $ = cheerio.load(html);
+
+    // An empty array to save the data that we'll scrape
+    var scrapeResults = [];
+
+    // With cheerio, find each div with the "headline" class
+    $('div.headline').each(function(i, element) {
+
+        // Save the text of the child element in the "title" variable
+        var title = $(element).children().text();
+        // Save the link of the child element in the "link" variable
+        var link = $(element).children().attr("href");
+
+        // if the there is a title and a link, 
+        if (title && link) {
+            // Save these scrapeResults in an object
+            scrapeResults.push({
+                title: title,
+                link: link
+            });
+        }
+    });
+    // Log the result once cheerio analyzes each of its selected elements
+    console.log(scrapeResults);
+
 });
