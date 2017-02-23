@@ -21,7 +21,7 @@ module.exports = (app, db, approot) => {
     var express = require('express');
     var path = require('path');
     app.use('/', express.static(path.join(approot, '/public')));
-    
+
     /*
         Some browsers (chrome!) will always ask for the
         favicon. We won't return one, but we'll respond
@@ -35,17 +35,16 @@ module.exports = (app, db, approot) => {
         console.log('standard.js - favicon.ico request, responding with 204');
         res.status(204).send('/favicon.ico does not exist');
     });
-/*    
-    // Change this as needed, for example '/login' might 
-    // be preferred over '/index'
-    var redirTo = '/index';
-    console.log('standard.js : redirTo = '+redirTo);
+    /*    
+        // Change this as needed, for example '/login' might 
+        // be preferred over '/index'
+        var redirTo = '/index';
+        console.log('standard.js : redirTo = '+redirTo);
 
-    // route all unknown paths to `redirTo`
-    app.get('*',function (req, res) {
-        console.log('standard.js - redirecting ['+req.route.path+'] to '+redirTo);
-        res.redirect(redirTo);
-    });
-*/
+        // route all unknown paths to `redirTo`
+        app.get('*',function (req, res) {
+            console.log('standard.js - redirecting ['+req.route.path+'] to '+redirTo);
+            res.redirect(redirTo);
+        });
+    */
 };
-

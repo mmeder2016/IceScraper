@@ -1,51 +1,49 @@
-// DEPENDENCIES
-var express = require("express");
-var exphbs = require("express-handlebars");
-var bodyParser = require("body-parser");
+////////// MODULEDEPENDENCIES
 var request = require('request');
 var cheerio = require('cheerio');
 var mongoose = require('mongoose');
 
-// EXPRESS SETUP
+////////// EXPRESS SETUP
+var express = require("express");
 var app = express();
 
-// HANDLEBARS SETUP
+////////// HANDLEBARS SETUP
 var exphbs = require('express-handlebars');
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-// METHOD OVERRIDE SETUP
+////////// METHOD OVERRIDE SETUP
 // var methodOverride = require('method-override');
 // app.use(methodOverride('_method'));
 
-// BODY PARSER SETUP
+////////// BODY PARSER SETUP
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
-// ALLOW CORS http://enable-cors.org/server_expressjs.html
+////////// ALLOW CORS http://enable-cors.org/server_expressjs.html
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     next();
 });
 
-// SET PORT PLATFORM INDEPENDENT 
+////////// SET PORT PLATFORM INDEPENDENT 
 app.set('port', (process.env.PORT || 3000));
 
-// DATABASE MODELS
+////////// DATABASE MODELS
 var db;
 //var db = require('./models');
 
-// SET ROUTES
+////////// SET ROUTES
 var router = require('./router');
 router(app, db, __dirname);
 
 
 
-// Set the app to listen on port 3000
-app.listen(3000, function() {
+////////// START THE SERVER
+app.listen(app.get('port'), function() {
     console.log("App running on port 3000!");
 });

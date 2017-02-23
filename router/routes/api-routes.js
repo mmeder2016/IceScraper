@@ -1,9 +1,11 @@
+// SERVER API ROUTING
+
 module.exports = function(app, db, approot) {
     app.get("/", function(req, res) {
         console.log('app.get("/", function(req, res) {');
+
         res.render("index");
         //res.send('app.get("/", function(req, res) {');
-
     });
 
     app.post("/", function(req, res) {

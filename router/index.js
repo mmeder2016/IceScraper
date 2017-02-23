@@ -1,7 +1,4 @@
-/* ************************************************************************ */
-/*
-    All Server Routes
-*/
+// All Server Routes
 'use strict'
 
 const routes = [
