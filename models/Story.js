@@ -26,7 +26,7 @@ var StorySchema = new Schema({
 });
 
 // Make a Story model with the StorySchema
-varStory = mongoose.model("Story", StorySchema);
+var Story = mongoose.model("Story", StorySchema);
 
 // Export the Story model
 module.exports = Story;
