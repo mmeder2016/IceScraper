@@ -7,7 +7,7 @@ var Schema = mongoose.Schema;
 // Create a CommentSchema with the Schema class
 var CommentSchema = new Schema({
     // commentText: a unique String
-    commentText: {
+    body: {
         type: String
     }
 });
