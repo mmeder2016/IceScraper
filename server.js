@@ -56,11 +56,6 @@ var cheerio = require('cheerio'); // Scrapes HTML
 var scrapeResults = [];
 scrapeWashingtonPost();
 
-//////////////////// STORE STORIES IN MONGOOSE ////////////////////
-scrapeResults.forEach(function() {
-
-});
-
 //////////////////// START THE SERVER ////////////////////
 app.listen(app.get('port'), function() {
     console.log("App running on port 3000!");

@@ -1,11 +1,20 @@
 // SERVER API ROUTING
-
 module.exports = function(app, db, approot) {
+    var path = require('path');
+    var Comment = require(path.join(approot, '/models/Comment.js'));
+    var Story = require(path.join(approot, '/models/Story.js'));
+
     app.get("/", function(req, res) {
         console.log('app.get("/", function(req, res) {');
 
-        res.render("index");
-        //res.send('app.get("/", function(req, res) {');
+        Story.find({}, function(error, storyArray) {
+            if (error) {
+                console.log(error);
+            } else {
+                //res.json(storyArray);
+                res.render('index', { stories: storyArray });
+            }
+        });
     });
 
     app.post("/", function(req, res) {
