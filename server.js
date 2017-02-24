@@ -76,13 +76,17 @@ function scrapeWashingtonPost() {
             var link = $(element).children().attr("href"); // child element link
             // if the there is a headline and a link, 
             if (headline && link) {
-                // Save these scrapeResults in an object
-                scrapeResults.push({
-                    headline: headline,
-                    link: link
+                var story = new Story({ headline: headline, link: link });
+                story.save(function(error, doc) {
+                    if (error) {
+                        console.log(error);
+                        console.log("Failed to save Story.")
+                    } else {
+                        console.log("Successfully saved Story.")
+                        console.log(doc);
+                    }
                 });
             }
         });
-        console.log(scrapeResults);
     });
 }
