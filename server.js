@@ -10,8 +10,8 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 //////////////////// METHOD OVERRIDE SETUP ////////////////////
-// var methodOverride = require('method-override');
-// app.use(methodOverride('_method'));
+var methodOverride = require('method-override');
+app.use(methodOverride('_method'));
 
 //////////////////// BODY PARSER SETUP ////////////////////
 var bodyParser = require('body-parser');

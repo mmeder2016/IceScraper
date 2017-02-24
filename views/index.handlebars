@@ -19,16 +19,16 @@
 					</div>
 					{{#each comments}}
 					<div class="panel-body div-comment-body">
-						<form action="/{{_id}}?_method=PUT" method="POST">
+						<form action="/{{this._id}}?_method=DELETE" method="POST">
 							<button type="submit">Delete</button>
 							{{body}}
 						</form>
 					</div>
 					{{/each}}
 					<div class="panel-footer">
-						<form class="create-update-form" action="/" method="POST">
+						<form class="create-comment" action="/{{this._id}}?_method=PUT" method="POST">
 							<div class="form-group">
-								<textarea class="form-control" rows="3" name="comment-text" placeholder="Add Comment"></textarea>
+								<textarea class="form-control" rows="3" name="comment" placeholder="Add Comment"></textarea>
 							</div>
 							<button type="submit">Submit</button>
 						</form>

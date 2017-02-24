@@ -11,8 +11,8 @@ module.exports = function(app, db, approot) {
             if (error) {
                 console.log(error);
             } else {
-                //res.json(storyArray);
-                res.render('index', { stories: storyArray });
+                res.json(storyArray);
+                //res.render('index', { stories: storyArray });
             }
         });
     });
@@ -27,7 +27,24 @@ module.exports = function(app, db, approot) {
     app.put("/:id", function(req, res) {
         console.log('app.put("/:id", function(req, res) {');
         console.log('req.params.id:' + req.params.id);
-
-        res.send('app.put("/:id", function(req, res) {');
+        console.log('req.body.comment:' + req.body.comment);
+        var comment = new Comment({ body: req.body.comment });
+        comment.save(function(error, savedComment) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log(savedComment);
+                commentId = savedComment._id;
+                // req.params.id
+                Story.findOneAndUpdate({ "_id": req.params.id }, { $push: { "comments": savedComment._id } }, { new: true }, function(err, newdoc) {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        console.log(newdoc);
+                        res.redirect("/");
+                    }
+                });
+            }
+        });
     });
 };
