@@ -36,7 +36,8 @@ var mongoose = require('mongoose');
 var Comment = require("./models/Comment.js");
 var Story = require("./models/Story.js");
 // Database configuration with mongoose
-mongoose.connect("mongodb://localhost/test_db");
+// mongoose.connect("mongodb://localhost/test_db"); home
+mongoose.connect("mongodb://heroku_rxndvpvw:moi649i63lli21bkp1knuedun5@ds161059.mlab.com:61059/heroku_rxndvpvw");
 var db = mongoose.connection;
 db.on("error", function(error) {
     console.log("Mongoose Error: ", error);
