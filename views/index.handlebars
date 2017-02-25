@@ -12,7 +12,7 @@
 	<div class="row">
 		{{#each stories}}
 			<div class="col-sm-6">
-				<div class="panel panel-default">
+				<div class="panel panel-default" story-id={{this._id}}>
 					<div class="panel-heading">
 						<h3 class="panel-title">{{headline}}</h3>
 						<a href={{link}}>Link to Story</a>

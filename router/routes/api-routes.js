@@ -19,11 +19,21 @@ module.exports = function(app, db, approot) {
             });
     });
 
-    app.post("/", function(req, res) {
-        console.log('app.post("/", function(req, res) {');
-        console.log(req.body);
+    app.delete("/:id", function(req, res) {
+        console.log('app.delete("/:id", function(req, res) {');
+        console.log('req.params.id: ' + req.params.id);
 
-        res.send('app.post("/", function(req, res) {');
+        // Remove the comment from the Comments collection
+        Comment.findByIdAndRemove(req.params.id, function(error, comment) {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log("Deleted Comment:id:" + comment._id);
+                // DID NOT REMOVE ID FROM STORIES OBJECT
+            }
+        });
+
+        res.redirect("/");
     });
 
     // Add new comments to database and then redirect to app.get('/') 
